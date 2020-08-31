@@ -26,7 +26,12 @@ class HomeController extends Controller
     {
         $weather = new OpenWeather();
         $current= $weather->getCurrentWeatherByCityName("adana","metric");
-
         return view('Admin.Homepage.homepage',compact('current'));
+    }
+
+    public function dateWeather(Request  $request){
+        header("Content-type:application/json;charset=utf-8");
+
+        return true;
     }
 }

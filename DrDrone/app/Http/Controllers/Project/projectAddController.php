@@ -22,7 +22,7 @@ class projectAddController extends Controller
 
         $request->validate([
             'project_name'=>'min:3',
-            'image'=>'required|image|mimes:jpeg,png,gif,jpg|max:2048'
+            'image'=>'required|image|mimes:jpeg,png,gif,jpg,svg|max:2048  '
         ]);
 
         $project=new projectModel();

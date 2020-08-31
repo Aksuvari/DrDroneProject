@@ -25,6 +25,51 @@
     </div> <!-- end container-fluid -->
 </div>
 @include('Admin.Partials.footer')
+<script>
+
+    $("#dateajax").change(function (event){
+        event.preventDefault();
+        var date=$('#dateajax').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{ route('dateWeather') }}",
+            method: 'POST',
+            data: {date},
+            success: function(result){
+                console.log('başardık ');
+                jQuery('.alert').show();
+                jQuery('.alert').html(result.success);
+            }});
+    });
+    /*jQuery(document).ready(function(){
+
+        jQuery('dateajax').click(function(e){
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{ url('/grocery/post') }}",//verilecek
+                method: 'post',
+                data: {
+                    temp: jQuery('#temp').val(),
+                    humidity: jQuery('#humidity').val(),
+                    icon: jQuery('#icon').val()
+                },
+                success: function(result){
+                    jQuery('.alert').show();
+                    jQuery('.alert').html(result.success);
+                }});
+        });
+    });*/
+
+</script>
 @yield('script')
 </body>
 </html>

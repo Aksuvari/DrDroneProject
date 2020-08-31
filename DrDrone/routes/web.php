@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::get('/homepage','HomeController@index')->name('homepage')->middleware('auth');
+Route::get('/','HomeController@index')->name('homepage')->middleware('auth');
+Route::post('/dateWeather','HomeController@dateWeather')->name('dateWeather')->middleware('auth');
+
 
 
 /////Proje Route Ayarları

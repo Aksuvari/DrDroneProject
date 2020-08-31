@@ -3,6 +3,7 @@
 <link href="{{asset('Frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('Frontend/assets/css/icons.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('Frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css"> -->
+<meta name="_token" content="{{csrf_token()}}" />
 <header id="topnav">
     <div class="topbar-main">
         <div class="container-fluid">
@@ -85,6 +86,11 @@
     </div>
     <!-- end topbar-main -->
 
+    <!--@foreach($current as $item)
+
+            if($item->datetime->formatted_date
+
+    @endforeach -->
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row">
@@ -93,10 +99,10 @@
                     <div class="page-title-box">
                         <h4 class="page-title">Bugünün Tarihi</h4>
                         <ol class="breadcrumb">
-                            <div class="form-group row">
+                            <div class="form-group row" id="formapi" >
                                 <label for="example-date-input" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <input class="form-control denemedir" type="date" value="2020-08-20" id="example-date-input">
+                                    <input class="form-control" id="dateajax"  name="date" type="date" value="2020-08-20" >
                                 </div>
                             </div>
                         </ol>
@@ -106,32 +112,27 @@
                                         <img src="{{$current['condition']['icon']}}"></h6>
                                 </div>
                             </div>
-                            <div class="state-graph">
 
-                                <div class="col-md-4 col-lg-3"><i class="ion-ios7-thunderstorm"></i> <h6 class="text-uppercase mb-3">Rüzgar</h6>
+                            <div class="state-graph">
+                                <div class="col-md-4 col-lg-3"><i class="ion-ios7-sunny"></i>
+                                    <h6 class="text-uppercase mb-3">{{$current['forecast']['humidity']}}</h6>
                                 </div>
                             </div>
                             <div class="state-graph">
-                                <div class="col-md-4 col-lg-3"><i class="ion-ios7-sunny"></i> <h6 class="text-uppercase mb-3">
-                                        {{$current['forecast']['humidity']}}</h6>
-                                </div>
-                            </div>
-                            <div class="state-graph">
-                                <div class="col-md-4 col-lg-3"><i class="ion-ios7-sunny"></i> <h6 class="text-uppercase mb-3">{{$current['forecast']['temp']}}</h6>
+                                <div class="col-md-4 col-lg-3"><i class="ion-ios7-sunny"></i>
+                                    <h6 class="text-uppercase mb-3">{{$current['forecast']['temp']}}</h6>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- MENU Start -->
-    <!-- end navbar-custom -->
 </header>
+
+
 <!--
 <script src="{{asset('Frontend/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('Frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
