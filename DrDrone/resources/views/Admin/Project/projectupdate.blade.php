@@ -13,22 +13,17 @@
         <div class="col-lg-12">
             <div class="card m-b-20">
                 <div class="card-body">
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                {{$erros}}
-                            @endforeach
-                        </div>
-                    @endif
-                    <form action="{{route('projectAdd')}}" method="post" enctype="multipart/form-data">
+
+                    <form action="{{route('projectupdate',$project->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Proje adı</label>
-                            <input type="text" class="form-control" id="project_name" name="project_name" required />
+                            <input type="text" class="form-control" id="project_name" name="project_name" value="{{$project->project_name}}"  />
                         </div>
 
                         <div class="form-group">
-                            <label>Proje Fotoğrafı</label>
+                            <label>Proje Fotoğrafı</label> <br>
+                            <img src="{{asset($project->image)}}" width="200">
                             <input type="file" name="image" id="image" class="form-control"  />
                         </div>
                         <div class="col-lg-3 col-md-6 m-b-30">

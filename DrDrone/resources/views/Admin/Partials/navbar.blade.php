@@ -85,12 +85,6 @@
         </div> <!-- end container -->
     </div>
     <!-- end topbar-main -->
-
-    <!--@foreach($current as $item)
-
-            if($item->datetime->formatted_date
-
-    @endforeach -->
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row">

@@ -27,6 +27,7 @@
                             <th>Proje Adı</th>
                             <th>Proje Fotoğrafı</th>
                             <th>Proje Detayı</th>
+                            <th>İşlemler</th>
                         </tr>
                         </thead>
 
@@ -39,13 +40,10 @@
                                        <div class="col-6">
 
                                            <a class="image-popup-no-margins" href="{{$projects->image}}">
-                                               <img class="img-fluid" alt="" src="{{$projects->image}}" width="100" height="120">
+                                               <img class="img-fluid" alt="" src="{{$projects->image}}" width="200" >
                                            </a>
 
                                        </div>
-
-
-
                                 <td>
                                     <div class="col-sm-6 col-md-3 m-t-30">
                                         <div class=" text-center">
@@ -73,8 +71,23 @@
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
                                     </div>
+                                </td>
 
-
+                                <td>
+                                    <div class="row">
+                                     <div class="col-lg-2">
+                                    <form action="{{route('projectupdate',$projects->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" title="Güncelle" class="btn btn-sm btn-primary"> <i class="fa fa-pen-square"></i></button>
+                                    </form>
+                                     </div>
+                                         <div class="col-lg-2">
+                                        <form action="{{route('projectdeletePost',$projects->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" title="Sil" class="btn-danger"> <i class="fa fa-times"></i></button>
+                                    </form>
+                                         </div>
+                                    </div>
                                 </td>
 
                             </tr>

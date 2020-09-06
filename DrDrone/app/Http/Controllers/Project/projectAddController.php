@@ -37,7 +37,7 @@ class projectAddController extends Controller
         $project->created_at=now();
         $project->save();
 
-
         return view('Admin.Project.projectAdd',compact('current'));
     }
+
 }
